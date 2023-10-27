@@ -1,26 +1,26 @@
 const initialCards = [
-    {
-      name: "Архыз",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-      name: "Челябинская область",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-      name: "Иваново",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-      name: "Камчатка",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-      name: "Холмогорский район",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-      name: "Байкал",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
+  {
+    name: "Москва",
+    link: "/images/astemir-almov--kgrPSetNW8-unsplash.webp",
+  },
+  {
+    name: "Санкт-Петербург",
+    link: "/images/daniil-smetanin-pjQyR8lYZw4-unsplash.webp",
+  },
+  {
+    name: "Самара",
+    link: "/images/alexandra-nosova-uWVi5YHbtco-unsplash.webp",
+  },
+  {
+    name: "Казань",
+    link: "/images/alexey-ruban-JnlpvSKALl4-unsplash.webp",
+  },
+  {
+    name: "Краснодар",
+    link: "/images/kirill-sirazheev-x14FSxm1YVA-unsplash.webp",
+  },
+  {
+    name: "Сочи",
+    link: "/images/dima-fedorov-ZZkw00YCY1E-unsplash.webp",
+  },
 ];
