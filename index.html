@@ -27,7 +27,11 @@
           ></div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button
+              class="profile__edit-button"
+              type="button"
+              aria-label="Редактировать профиль"
+            ></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
           <button class="profile__add-button" type="button"></button>
@@ -84,8 +88,8 @@
               placeholder="Ссылка на картинку"
               required
             />
-            <button type="submit" class="button popup__button">
-              Сохранить
+            <button type="submit" class="button popup__button" required>
+              Создать
             </button>
           </form>
         </div>
@@ -98,7 +102,7 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/cards.js" defer></script>
     <script src="./scripts/index.js" defer></script>
 
     <!--Относится к реализации 4-го спринта-->
