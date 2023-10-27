@@ -4,35 +4,49 @@ const cardTemplate = document.querySelector("#card-template").content;
 
 /* @todo: DOM узлы */
 
-//const profileAddButton = document.querySelector(".profile__add-button");
+const addButton = document.querySelector(".profile__add-button");
 const placesList = document.querySelector(".places__list");
 
 /* @todo: Функция создания карточки */
 
-function CardGenerator(cardImageSrc, cardTitleName) {
+function createCard(cardAtribute, deleteCard) {
   const card = cardTemplate.querySelector(".card").cloneNode(true);
   const cardImage = card.querySelector(".card__image");
-  const cardDeleteButton = card.querySelector(".card__delete-button");
   const cardTitle = card.querySelector(".card__title");
   //const cardLikeButton = card.querySelector(".card__like-button");
+  const deleteButton = card.querySelector(".card__delete-button");
 
-  cardImage.src = cardImageSrc;
-  cardImage.alt = cardTitleName;
-  cardTitle.textContent = cardTitleName;
+  cardImage.src = cardAtribute.link;
+  cardImage.alt = cardAtribute.name;
+  cardTitle.textContent = cardAtribute.name;
 
-  /* @todo: Функция удаления карточки */
-
-  cardDeleteButton.addEventListener("click", () => {
-    card.remove();
-  });
+  deleteButton.addEventListener("click", deleteCard);
 
   return card;
 }
 
+/* @todo: Функция удаления карточки */
+
+function deleteCard(evt) {
+  const card = evt.target.closest(".card");
+  card.remove();
+}
+
 /* @todo: Вывести карточки на страницу */
 
-initialCards.forEach((cardItem) => {
-  const card = CardGenerator(cardItem.link, cardItem.name);
+initialCards.forEach((cardItem) =>
+  placesList.append(createCard(cardItem, deleteCard))
+);
 
-  placesList.append(card);
-});
+/* @todo: Открыть/закрыть попап добавления карточки */
+
+/*addButton.addEventListener("click", () => {
+  const popup = document.querySelector(".popup_type_new-card");
+  const closePopup = popup.querySelector(".popup__close");
+
+  closePopup.addEventListener("click", () =>
+    popup.classList.remove("popup_is-opened")
+  );
+
+  popup.classList.add("popup_is-opened");
+});*/
