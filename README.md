@@ -1,6 +1,6 @@
 # Проектная работа Mesto
 
-### Работа с реализацией [макета](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1&mode=dev) "Mesto" по курсу Яндекс Практикума "Фронтенд-разработчик"
+### Проектная работа с [макетом](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1&mode=dev) "Mesto" по курсу Яндекс Практикума "Фронтенд-разработчик"
 
 Комплектация репозитория:
 
