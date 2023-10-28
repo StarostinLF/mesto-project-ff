@@ -34,7 +34,11 @@
             ></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="Добавить карточку"
+          ></button>
         </section>
         <section class="places page__section">
           <ul class="places__list"></ul>
@@ -45,7 +49,11 @@
       </footer>
       <div class="popup popup_type_edit">
         <div class="popup__content">
-          <button type="button" class="popup__close"></button>
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="edit-profile">
             <input
@@ -71,7 +79,11 @@
       </div>
       <div class="popup popup_type_new-card">
         <div class="popup__content">
-          <button type="button" class="popup__close"></button>
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__form" name="new-place">
             <input
@@ -96,7 +108,11 @@
       </div>
       <div class="popup popup_type_image">
         <div class="popup__content popup__content_content_image">
-          <button type="button" class="popup__close"></button>
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
           <img src="" alt="" class="popup__image" />
           <p class="popup__caption"></p>
         </div>
@@ -110,11 +126,19 @@
       <!--Про тег темплейт студенты узнают из уроков 4-го спринта-->
       <li class="places__item card">
         <img class="card__image" src="" alt="" />
-        <button type="button" class="card__delete-button"></button>
+        <button
+          type="button"
+          class="card__delete-button"
+          aria-label="Удалить"
+        ></button>
         <!--Фоновое, инлайном-->
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button type="button" class="card__like-button"></button>
+          <button
+            type="button"
+            class="card__like-button"
+            aria-label="Мне нравится!"
+          ></button>
         </div>
       </li>
     </template>
