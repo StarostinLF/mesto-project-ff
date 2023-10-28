@@ -4,17 +4,18 @@ const cardTemplate = document.querySelector("#card-template").content;
 
 /* @todo: DOM узлы */
 
-const addButton = document.querySelector(".profile__add-button");
-const placesList = document.querySelector(".places__list");
+const addCard = document.querySelector(".profile__add-button"),
+  editProfile = document.querySelector(".profile__edit-button"),
+  placesList = document.querySelector(".places__list");
 
 /* @todo: Функция создания карточки */
 
 function createCard(cardAtribute, deleteCard) {
-  const card = cardTemplate.querySelector(".card").cloneNode(true);
-  const cardImage = card.querySelector(".card__image");
-  const cardTitle = card.querySelector(".card__title");
-  //const cardLikeButton = card.querySelector(".card__like-button");
-  const deleteButton = card.querySelector(".card__delete-button");
+  const card = cardTemplate.querySelector(".card").cloneNode(true),
+    cardImage = card.querySelector(".card__image"),
+    cardTitle = card.querySelector(".card__title"),
+    //cardLikeButton = card.querySelector(".card__like-button"),
+    deleteButton = card.querySelector(".card__delete-button");
 
   cardImage.src = cardAtribute.link;
   cardImage.alt = cardAtribute.name;
@@ -38,15 +39,23 @@ initialCards.forEach((cardItem) =>
   placesList.append(createCard(cardItem, deleteCard))
 );
 
-/* @todo: Открыть/закрыть попап добавления карточки */
+/* От себя: Открытие/закрытие попапов */
 
-/*addButton.addEventListener("click", () => {
-  const popup = document.querySelector(".popup_type_new-card");
-  const closePopup = popup.querySelector(".popup__close");
+function openClosePopup(className) {
+  const popup = document.querySelector(className),
+    closePopup = popup.querySelector(".popup__close");
 
   closePopup.addEventListener("click", () =>
     popup.classList.remove("popup_is-opened")
   );
 
   popup.classList.add("popup_is-opened");
-});*/
+}
+
+addCard.addEventListener("click", () => {
+  openClosePopup(".popup_type_new-card");
+});
+
+editProfile.addEventListener("click", () => {
+  openClosePopup(".popup_type_edit");
+});
