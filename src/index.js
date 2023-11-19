@@ -1,3 +1,7 @@
+import "./pages/index.css";
+import { initialCards, deleteCard } from "./components/cards";
+import openClosePopup from "./components/modal";
+
 /* @todo: Темплейт карточки */
 
 const cardTemplate = document.querySelector("#card-template").content;
@@ -26,31 +30,13 @@ function createCard(cardAtribute, deleteCard) {
   return card;
 }
 
-/* @todo: Функция удаления карточки */
-
-function deleteCard(evt) {
-  const card = evt.target.closest(".card");
-  card.remove();
-}
-
 /* @todo: Вывести карточки на страницу */
 
 initialCards.forEach((cardItem) =>
   placesList.append(createCard(cardItem, deleteCard))
 );
 
-/* От себя: Открытие/закрытие попапов */
-
-function openClosePopup(className) {
-  const popup = document.querySelector(className),
-    closePopup = popup.querySelector(".popup__close");
-
-  closePopup.addEventListener("click", () =>
-    popup.classList.remove("popup_is-opened")
-  );
-
-  popup.classList.add("popup_is-opened");
-}
+/* Обработчики событий (попапы, формы, зум изображений) */
 
 addCard.addEventListener("click", () => {
   openClosePopup(".popup_type_new-card");

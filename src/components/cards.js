@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Москва",
     link: "./images/astemir-almov--kgrPSetNW8-unsplash.webp",
@@ -24,3 +24,10 @@ const initialCards = [
     link: "./images/dima-fedorov-ZZkw00YCY1E-unsplash.webp",
   },
 ];
+
+/* @todo: Функция удаления карточки */
+
+export default function deleteCard(evt) {
+  const card = evt.target.closest(".card");
+  card.remove();
+}
