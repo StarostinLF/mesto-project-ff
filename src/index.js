@@ -62,6 +62,7 @@ function handleNewCardFormSubmit(evt) {
   const popupNewCard = document.querySelector(".popup_type_new-card"),
     newCard = createCard(
       { name: cardNameInput.value, link: cardLinkInput.value },
+      handleImageClick,
       likeCard,
       deleteCard
     );
