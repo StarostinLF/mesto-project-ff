@@ -9,7 +9,7 @@
 - изображения ([images](https://github.com/StarostinLF/mesto-project-ff/tree/main/src/images));
 - главный файл стилей ([pages](https://github.com/StarostinLF/mesto-project-ff/tree/main/src/pages));
 - шрифты и normalize.css ([vendor](https://github.com/StarostinLF/mesto-project-ff/tree/main/src/vendor));
-- html-страница сайта ([index.js](https://github.com/StarostinLF/mesto-project-ff/blob/main/src/index.html));
-- главный JS-файл ([index.html](https://github.com/StarostinLF/mesto-project-ff/blob/main/src/index.js)).
+- html-страница сайта ([index.html](https://github.com/StarostinLF/mesto-project-ff/blob/main/src/index.html));
+- главный JS-файл ([index.js](https://github.com/StarostinLF/mesto-project-ff/blob/main/src/index.js)).
 
 [https://github.com/StarostinLF/mesto-project-ff](https://github.com/StarostinLF/mesto-project-ff)
