@@ -25,7 +25,7 @@ const cardForm = document.querySelector('.popup__form[name="new-place"]'),
   cardNameInput = cardForm.querySelector(".popup__input_type_card-name"),
   cardLinkInput = cardForm.querySelector(".popup__input_type_url");
 
-const popup = document.querySelectorAll(".popup"),
+const popups = document.querySelectorAll(".popup"),
   popupEdit = document.querySelector(".popup_type_edit"),
   popupNewCardContainer = document.querySelector(".popup_type_new-card"),
   popupImageContainer = document.querySelector(".popup_type_image"),
@@ -103,15 +103,15 @@ profileAddButton.addEventListener("click", () => {
   openPopup(popupNewCardContainer);
 });
 
-popup.forEach((popupItem) => {
-  popupItem.addEventListener("mousedown", (evt) => {
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
     if (
       evt.target.classList.contains("popup_is-opened") ||
       evt.target.classList.contains("popup__close")
     ) {
-      closePopup(popupItem);
+      closePopup(popup);
 
-      popupItem.removeEventListener("mousedown", closePopup);
+      popup.removeEventListener("mousedown", closePopup);
     }
   });
 });

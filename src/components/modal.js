@@ -1,13 +1,13 @@
 /* Функция открытия/закрытия попапов */
 
-function openPopup(popupElement) {
-  const popup = popupElement;
+function openPopup(querySelectorClassName) {
+  const popup = querySelectorClassName;
 
   popup.classList.add("popup_is-opened");
 }
 
-function closePopup(popupElement) {
-  const popup = popupElement;
+function closePopup(querySelectorClassName) {
+  const popup = querySelectorClassName;
 
   popup.classList.remove("popup_is-opened");
 
