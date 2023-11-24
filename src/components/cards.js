@@ -1,3 +1,4 @@
+/* Захаркоженные изображения */
 import moscow from "../images/astemir-almov--kgrPSetNW8-unsplash.webp";
 import spbImage from "../images/daniil-smetanin-pjQyR8lYZw4-unsplash.webp";
 import samara from "../images/alexandra-nosova-uWVi5YHbtco-unsplash.webp";
@@ -32,7 +33,7 @@ const initialCards = [
   },
 ];
 
-/* @todo: Функция создания карточки */
+/* Функция создания карточки */
 
 function createCard(cardAtribute, handleImageClick, likeCard, deleteCard) {
   const cardTemplate = document.querySelector("#card-template").content,
@@ -53,7 +54,7 @@ function createCard(cardAtribute, handleImageClick, likeCard, deleteCard) {
   return card;
 }
 
-/* @todo: Функция лайка карточки */
+/* Функция лайка карточки */
 
 function likeCard(evt) {
   const card = evt.target.closest(".card"),
@@ -62,7 +63,7 @@ function likeCard(evt) {
   cardLikeButton.classList.toggle("card__like-button_is-active");
 }
 
-/* @todo: Функция удаления карточки */
+/* Функция удаления карточки */
 
 function deleteCard(evt) {
   const card = evt.target.closest(".card");

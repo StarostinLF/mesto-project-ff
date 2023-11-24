@@ -12,10 +12,10 @@ import { openPopup, closePopup } from "./components/modal";
 const placesList = document.querySelector(".places__list");
 
 const profile = document.querySelector(".profile"),
-  editProfile = profile.querySelector(".profile__edit-button"),
+  profileEditButton = profile.querySelector(".profile__edit-button"),
   profileTitle = profile.querySelector(".profile__title"),
   profileDescription = profile.querySelector(".profile__description"),
-  addCard = profile.querySelector(".profile__add-button");
+  profileAddButton = profile.querySelector(".profile__add-button");
 
 const profileForm = document.querySelector('.popup__form[name="edit-profile"]'),
   nameInput = profileForm.querySelector(".popup__input_type_name"),
@@ -40,7 +40,7 @@ initialCards.forEach((cardItem) =>
   )
 );
 
-/* @todo: Отправить формы на странице */
+/* @todo: Изменить профиль */
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -53,6 +53,8 @@ function handleProfileFormSubmit(evt) {
 
   popupEdit.classList.remove("popup_is-opened");
 }
+
+/* @todo: Добавить карточку на страницу */
 
 function handleNewCardFormSubmit(evt) {
   evt.preventDefault();
@@ -86,18 +88,18 @@ function handleImageClick(evt) {
   openPopup(popupImageContainer);
 }
 
-/* Обработчики событий (попапы, формы) */
+/* Обработчики событий (формы, попапы) */
 
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleNewCardFormSubmit);
 
-editProfile.addEventListener("click", () => {
+profileEditButton.addEventListener("click", () => {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
 
   openPopup(popupEdit);
 });
-addCard.addEventListener("click", () => {
+profileAddButton.addEventListener("click", () => {
   openPopup(popupNewCardContainer);
 });
 
