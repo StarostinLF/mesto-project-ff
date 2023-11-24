@@ -101,6 +101,15 @@ addCard.addEventListener("click", () => {
   openPopup(popupNewCardContainer);
 });
 
-closePopup(popupEdit);
-closePopup(popupImageContainer);
-closePopup(popupNewCardContainer);
+popup.forEach((popupItem) => {
+  popupItem.addEventListener("mousedown", (evt) => {
+    if (
+      evt.target.classList.contains("popup_is-opened") ||
+      evt.target.classList.contains("popup__close")
+    ) {
+      closePopup(popupItem);
+
+      popupItem.removeEventListener("mousedown", closePopup);
+    }
+  });
+});

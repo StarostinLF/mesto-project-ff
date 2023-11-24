@@ -7,16 +7,9 @@ function openPopup(popupElement) {
 }
 
 function closePopup(popupElement) {
-  const popup = popupElement,
-    closeButton = popup.querySelector(".popup__close");
+  const popup = popupElement;
 
-  popup.addEventListener("click", (evt) => {
-    if (evt.target === popup || evt.target === closeButton) {
-      popup.classList.remove("popup_is-opened");
-
-      popup.removeEventListener("click", closePopup);
-    }
-  });
+  popup.classList.remove("popup_is-opened");
 
   document.addEventListener("keydown", (evt) => {
     if (evt.key === "Escape") {
