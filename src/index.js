@@ -27,7 +27,7 @@ const cardForm = document.querySelector('.popup__form[name="new-place"]'),
 
 const popups = document.querySelectorAll(".popup"),
   popupEdit = document.querySelector(".popup_type_edit"),
-  popupNewCardContainer = document.querySelector(".popup_type_new-card"),
+  popupNewCard = document.querySelector(".popup_type_new-card"),
   popupImageContainer = document.querySelector(".popup_type_image"),
   popupImage = popupImageContainer.querySelector(".popup__image"),
   popupCaption = popupImageContainer.querySelector(".popup__caption");
@@ -45,11 +45,8 @@ initialCards.forEach((cardItem) =>
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
-  const newName = nameInput.value,
-    newJob = jobInput.value;
-
-  profileTitle.textContent = newName;
-  profileDescription.textContent = newJob;
+  profileTitle.textContent = nameInput.value;
+  profileDescription.textContent = jobInput.value;
 
   popupEdit.classList.remove("popup_is-opened");
 }
@@ -59,13 +56,12 @@ function handleProfileFormSubmit(evt) {
 function handleNewCardFormSubmit(evt) {
   evt.preventDefault();
 
-  const popupNewCard = popupNewCardContainer,
-    newCard = createCard(
-      { name: cardNameInput.value, link: cardLinkInput.value },
-      handleImageClick,
-      likeCard,
-      deleteCard
-    );
+  const newCard = createCard(
+    { name: cardNameInput.value, link: cardLinkInput.value },
+    handleImageClick,
+    likeCard,
+    deleteCard
+  );
 
   placesList.prepend(newCard);
 
@@ -81,9 +77,9 @@ function handleImageClick(evt) {
     cardImage = card.querySelector(".card__image"),
     cardTitle = card.querySelector(".card__title");
 
-  popupCaption.textContent = cardTitle.textContent;
-  popupImage.alt = cardTitle.alt;
   popupImage.src = cardImage.src;
+  popupImage.alt = cardTitle.alt;
+  popupCaption.textContent = cardTitle.textContent;
 
   openPopup(popupImageContainer);
 }
@@ -100,15 +96,12 @@ profileEditButton.addEventListener("click", () => {
   openPopup(popupEdit);
 });
 profileAddButton.addEventListener("click", () => {
-  openPopup(popupNewCardContainer);
+  openPopup(popupNewCard);
 });
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-    if (
-      evt.target.classList.contains("popup_is-opened") ||
-      evt.target.classList.contains("popup__close")
-    ) {
+    if (evt.target.matches(".popup_is-opened, .popup__close")) {
       closePopup(popup);
 
       popup.removeEventListener("mousedown", closePopup);

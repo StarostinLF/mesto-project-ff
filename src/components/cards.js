@@ -43,9 +43,9 @@ function createCard(cardAtribute, handleImageClick, likeCard, deleteCard) {
     cardLikeButton = card.querySelector(".card__like-button"),
     deleteButton = card.querySelector(".card__delete-button");
 
-  cardTitle.textContent = cardAtribute.name;
   cardImage.src = cardAtribute.link;
   cardImage.alt = cardAtribute.name;
+  cardTitle.textContent = cardAtribute.name;
 
   cardImage.addEventListener("click", handleImageClick);
   cardLikeButton.addEventListener("click", likeCard);
@@ -67,6 +67,7 @@ function likeCard(evt) {
 
 function deleteCard(evt) {
   const card = evt.target.closest(".card");
+
   card.remove();
 }
 
