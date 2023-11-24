@@ -1,15 +1,15 @@
 /* Захаркоженные изображения */
-import moscow from "../images/astemir-almov--kgrPSetNW8-unsplash.webp";
+import moscowImage from "../images/astemir-almov--kgrPSetNW8-unsplash.webp";
 import spbImage from "../images/daniil-smetanin-pjQyR8lYZw4-unsplash.webp";
-import samara from "../images/alexandra-nosova-uWVi5YHbtco-unsplash.webp";
-import kazan from "../images/alexey-ruban-JnlpvSKALl4-unsplash.webp";
-import krasnodar from "../images/kirill-sirazheev-x14FSxm1YVA-unsplash.webp";
-import sochi from "../images/dima-fedorov-ZZkw00YCY1E-unsplash.webp";
+import samaraImage from "../images/alexandra-nosova-uWVi5YHbtco-unsplash.webp";
+import kazanImage from "../images/alexey-ruban-JnlpvSKALl4-unsplash.webp";
+import krasnodarImage from "../images/kirill-sirazheev-x14FSxm1YVA-unsplash.webp";
+import sochiImage from "../images/dima-fedorov-ZZkw00YCY1E-unsplash.webp";
 
 const initialCards = [
   {
     name: "Москва",
-    link: moscow,
+    link: moscowImage,
   },
   {
     name: "Санкт-Петербург",
@@ -17,19 +17,19 @@ const initialCards = [
   },
   {
     name: "Самара",
-    link: samara,
+    link: samaraImage,
   },
   {
     name: "Казань",
-    link: kazan,
+    link: kazanImage,
   },
   {
     name: "Краснодар",
-    link: krasnodar,
+    link: krasnodarImage,
   },
   {
     name: "Сочи",
-    link: sochi,
+    link: sochiImage,
   },
 ];
 
