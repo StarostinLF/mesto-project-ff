@@ -26,7 +26,7 @@ const cardForm = document.querySelector('.popup__form[name="new-place"]'),
   cardLinkInput = cardForm.querySelector(".popup__input_type_url");
 
 const popups = document.querySelectorAll(".popup"),
-  popupEdit = document.querySelector(".popup_type_edit"),
+  popupEditProfile = document.querySelector(".popup_type_edit"),
   popupNewCard = document.querySelector(".popup_type_new-card"),
   popupImageContainer = document.querySelector(".popup_type_image"),
   popupImage = popupImageContainer.querySelector(".popup__image"),
@@ -48,7 +48,7 @@ function handleProfileFormSubmit(evt) {
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
 
-  closePopup(popupEdit);
+  closePopup(popupEditProfile);
 }
 
 /* @todo: Добавить карточку на страницу */
@@ -93,7 +93,7 @@ profileEditButton.addEventListener("click", () => {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
 
-  openPopup(popupEdit);
+  openPopup(popupEditProfile);
 });
 profileAddButton.addEventListener("click", () => openPopup(popupNewCard));
 
