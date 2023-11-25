@@ -1,23 +1,31 @@
-/* Функция открытия/закрытия попапов */
+/* Функция открытия попапов */
 
 function openPopup(querySelectorClassName) {
   const popup = querySelectorClassName;
 
   popup.classList.add("popup_is-opened");
+
+  document.addEventListener("keydown", closeByEscape);
 }
+
+/* Функция закрытия попапов */
 
 function closePopup(querySelectorClassName) {
   const popup = querySelectorClassName;
 
   popup.classList.remove("popup_is-opened");
 
-  document.addEventListener("keydown", (evt) => {
-    if (evt.key === "Escape") {
-      popup.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", closeByEscape);
+}
 
-      document.removeEventListener("keydown", closePopup);
-    }
-  });
+/* Функция закрытия попапов через Escape */
+
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_is-opened");
+
+    closePopup(openedPopup);
+  }
 }
 
 export { openPopup, closePopup };

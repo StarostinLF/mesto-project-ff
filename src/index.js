@@ -48,7 +48,7 @@ function handleProfileFormSubmit(evt) {
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
 
-  popupEdit.classList.remove("popup_is-opened");
+  closePopup(popupEdit);
 }
 
 /* @todo: Добавить карточку на страницу */
@@ -65,7 +65,7 @@ function handleNewCardFormSubmit(evt) {
 
   placesList.prepend(newCard);
 
-  popupNewCard.classList.remove("popup_is-opened");
+  closePopup(popupNewCard);
 
   cardForm.reset();
 }
@@ -95,16 +95,11 @@ profileEditButton.addEventListener("click", () => {
 
   openPopup(popupEdit);
 });
-profileAddButton.addEventListener("click", () => {
-  openPopup(popupNewCard);
-});
+profileAddButton.addEventListener("click", () => openPopup(popupNewCard));
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.matches(".popup_is-opened, .popup__close")) {
+    if (evt.target.matches(".popup_is-opened, .popup__close"))
       closePopup(popup);
-
-      popup.removeEventListener("mousedown", closePopup);
-    }
   });
 });
