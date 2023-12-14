@@ -6,6 +6,7 @@ import {
   deleteCard,
 } from "./components/cards";
 import { openPopup, closePopup } from "./components/modal";
+import { enableValidation, clearValidation } from "./components/validation";
 
 /* @todo: DOM узлы */
 
@@ -32,7 +33,7 @@ const popups = document.querySelectorAll(".popup"),
   popupImage = popupImageContainer.querySelector(".popup__image"),
   popupCaption = popupImageContainer.querySelector(".popup__caption");
 
-/* @todo: Вывести карточки на страницу */
+/* Вывести карточки на страницу */
 
 initialCards.forEach((cardItem) =>
   placesList.append(
@@ -103,3 +104,16 @@ popups.forEach((popup) => {
       closePopup(popup);
   });
 });
+
+/* Валидировать формы */
+enableValidation({
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+});
+
+clearValidation(profileForm);
+clearValidation(cardForm);
