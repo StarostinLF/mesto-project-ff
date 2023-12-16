@@ -81,6 +81,7 @@ function handleAvatarFormSubmit(evt) {
       console.error("Ошибка при получении данных пользователя:", error)
     );
 
+  clearValidation(avatarForm);
   closePopup(popupAvatar);
 }
 
@@ -94,6 +95,7 @@ function handleProfileFormSubmit(evt) {
 
   editProfileInfo(profileTitle.textContent, profileDescription.textContent);
 
+  clearValidation(profileForm);
   closePopup(popupEditProfile);
 }
 
@@ -114,6 +116,7 @@ function handleNewCardFormSubmit(evt) {
     })
     .catch((error) => console.error("Ошибка при добавлении карточки:", error));
 
+  clearValidation(cardForm);
   closePopup(popupNewCard);
 
   cardForm.reset();
@@ -173,5 +176,6 @@ enableValidation({
   errorClass: "popup__error_visible",
 });
 
+clearValidation(avatarForm);
 clearValidation(profileForm);
 clearValidation(cardForm);
