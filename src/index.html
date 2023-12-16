@@ -26,13 +26,14 @@
         <section class="profile page__section">
           <div class="profile__image"></div>
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <h1 class="profile__title"></h1>
+            <span class="profile__id"></span>
             <button
               class="profile__edit-button"
               type="button"
               aria-label="Редактировать профиль"
             ></button>
-            <p class="profile__description">Исследователь океана</p>
+            <p class="profile__description"></p>
           </div>
           <button
             class="profile__add-button"
@@ -49,6 +50,32 @@
       <footer class="footer page__section">
         <p class="footer__copyright">© 2021 Mesto Russia</p>
       </footer>
+
+      <div class="popup popup_type_edit_avatar popup_is-animated">
+        <div class="popup__content">
+          <button
+            type="button"
+            class="popup__close"
+            aria-label="Закрыть"
+          ></button>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form" name="avatar">
+            <input
+              type="url"
+              name="link"
+              class="popup__input popup__input_type_url"
+              placeholder="Ссылка на картинку"
+              required
+              pattern="https?://.+"
+              title="Введите корректный URL"
+            />
+            <span class="popup__input_type_error" data-error="link"></span>
+            <button type="submit" class="button popup__button" required>
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
 
       <div class="popup popup_type_edit popup_is-animated">
         <div class="popup__content">
@@ -157,11 +184,14 @@
         ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button
-            type="button"
-            class="card__like-button"
-            aria-label="Мне нравится!"
-          ></button>
+          <div class="card__like-button-container">
+            <button
+              type="button"
+              class="card__like-button"
+              aria-label="Мне нравится!"
+            ></button>
+            <span class="card__like-counter"></span>
+          </div>
         </div>
       </li>
     </template>
