@@ -14,7 +14,7 @@ const validationConfig = {
 function showError(input, errorMessage) {
   const errorElement = input
     .closest(validationConfig.formSelector)
-    .querySelector(`[data-error="${input.name}"]`);
+    .querySelector(`.popup__input_type_error-${input.name}`);
 
   input.classList.add(validationConfig.inputErrorClass);
 
@@ -24,9 +24,11 @@ function showError(input, errorMessage) {
 function hideError(input) {
   const errorElement = input
     .closest(validationConfig.formSelector)
-    .querySelector(`[data-error="${input.name}"]`);
+    .querySelector(`.popup__input_type_error-${input.name}`);
 
-  errorElement.textContent = "";
+  input.classList.remove(validationConfig.inputErrorClass);
+
+  if (errorElement) errorElement.textContent = "";
 }
 
 /* Проверка валидации полей ввода */
@@ -34,28 +36,23 @@ function hideError(input) {
 function checkInputValidity(input) {
   if (input.validity.valueMissing) {
     showError(input, "Это обязательное поле");
+
     return false;
   }
 
-  if (input.validity.patternMismatch) {
-    showError(input, input.dataError);
-    return false;
-  }
+  if (input.validity.patternMismatch)
+    input.setCustomValidity(input.dataset.error);
+  else input.setCustomValidity("");
 
-  if (input.minLength > 0 && input.value.length < input.minLength) {
-    showError(input, `Минимальная длина: ${input.minLength} символов`);
-    return false;
-  }
-
-  hideError(input);
-  input.classList.remove(validationConfig.inputErrorClass);
+  if (input.validity.valid) hideError(input);
+  else showError(input, input.dataset.error);
 
   return true;
 }
 
 /* Обработчик события для валидации */
 
-function setEventListeners(form) {
+function setEventListeners(form, validationConfig) {
   const submitButton = form.querySelector(
     validationConfig.submitButtonSelector
   );
@@ -68,9 +65,7 @@ function setEventListeners(form) {
     toggleButtonState(isFormValid, submitButton);
   });
 
-  form.addEventListener("reset", function () {
-    clearValidation(form);
-  });
+  form.addEventListener("reset", () => clearValidation(form));
 }
 
 /* Подключение валидации к формам */
@@ -78,7 +73,7 @@ function setEventListeners(form) {
 function enableValidation(config) {
   const forms = document.querySelectorAll(config.formSelector);
 
-  forms.forEach((form) => setEventListeners(form));
+  forms.forEach((form) => setEventListeners(form, validationConfig));
 }
 
 /* Переключение кнопки в попапах */
