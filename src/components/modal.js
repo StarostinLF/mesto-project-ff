@@ -1,33 +1,36 @@
 /* Функция открытия попапов */
 
-function openPopup(popupClass) {
-  const popup = popupClass;
+function openPopup(popup) {
+  const newPopup = popup;
 
-  popup.classList.add("popup_is-opened");
+  newPopup.classList.add("popup_is-opened");
 
-  document.addEventListener("keydown", closeByEvents);
+  document.addEventListener("keydown", closeByEscape);
 }
 
 /* Функция закрытия попапов */
 
-function closePopup(popupClass) {
-  const popup = popupClass;
+function closePopup(popup) {
+  const newPopup = popup;
 
-  popup.classList.remove("popup_is-opened");
+  newPopup.classList.remove("popup_is-opened");
 
-  document.removeEventListener("keydown", closeByEvents);
+  document.removeEventListener("keydown", closeByEscape);
 }
 
 /* Функция закрытия попапов через Escape */
 
-function closeByEvents(evt) {
+function closeByEscape(evt) {
   const openedPopup = document.querySelector(".popup_is-opened");
 
-  if (
-    evt.key === "Escape" ||
-    evt.target.matches(".popup_is-opened, .popup__close")
-  )
+  if (evt.key === "Escape") closePopup(openedPopup);
+}
+
+function closeByOverlay(evt) {
+  const openedPopup = document.querySelector(".popup_is-opened");
+
+  if (evt.target.matches(".popup_is-opened, .popup__close"))
     closePopup(openedPopup);
 }
 
-export { openPopup, closePopup, closeByEvents };
+export { openPopup, closePopup, closeByOverlay };

@@ -1,7 +1,7 @@
 import "./pages/index.css";
 import { deleteCard } from "./components/api";
 import { createCard, changeLike, deleteMyCard } from "./components/cards";
-import { openPopup, closePopup, closeByEvents } from "./components/modal";
+import { openPopup, closePopup, closeByOverlay } from "./components/modal";
 import {
   enableValidation,
   clearValidation,
@@ -206,7 +206,7 @@ profileAvatarEditButton.addEventListener("click", () => openEditAvatarPopup());
 profileEditButton.addEventListener("click", () => openEditProfilePopup());
 profileAddButton.addEventListener("click", () => openPopup(popupNewCard));
 
-popups.forEach((popup) => popup.addEventListener("mousedown", closeByEvents));
+popups.forEach((popup) => popup.addEventListener("mousedown", closeByOverlay));
 
 /* Валидация форм */
 
