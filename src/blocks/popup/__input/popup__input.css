@@ -18,10 +18,6 @@
   border-bottom: 1px solid #ff0000;
 }
 
-.popup__input_type_error {
-  color: #ff0000;
-}
-
 @media screen and (max-width: 568px) {
   .popup__title {
     font-size: 12px;
