@@ -61,10 +61,8 @@ function changeLike(card, cardData) {
 
 /* Функция удаления карточки */
 
-function removeCard(card, cardData) {
-  deleteCard(cardData._id)
-    .then(() => card.remove())
-    .catch((error) => console.error("Ошибка при добавлении карточки:", error));
+function deleteMyCard(card) {
+  card.remove();
 }
 
-export { createCard, changeLike, removeCard };
+export { createCard, changeLike, deleteMyCard };

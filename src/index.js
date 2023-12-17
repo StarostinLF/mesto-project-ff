@@ -1,5 +1,6 @@
 import "./pages/index.css";
-import { createCard, changeLike, removeCard } from "./components/cards";
+import { deleteCard } from "./components/api";
+import { createCard, changeLike, deleteMyCard } from "./components/cards";
 import { openPopup, closePopup, closeByEvents } from "./components/modal";
 import {
   enableValidation,
@@ -155,6 +156,14 @@ function handleNewCardFormSubmit(evt) {
   clearValidation(cardForm);
 }
 
+/* @todo: Удалить свою карточку */
+
+function removeCard(card, cardData) {
+  deleteCard(cardData._id)
+    .then(() => deleteMyCard(card))
+    .catch((error) => console.error("Ошибка при добавлении карточки:", error));
+}
+
 /* @todo: Открыть изображение */
 
 function onOpenImage(cardData) {
@@ -171,7 +180,7 @@ function onOpenImage(cardData) {
 
 /* Исходные данные в попапах */
 
-function initialAlavatarLink() {
+function openEditAvatarPopup() {
   avatarLinkInput.value = profileAvatarEditButton.style.backgroundImage.replace(
     /url\(["']?(.*?)["']?\)/,
     "$1"
@@ -180,7 +189,7 @@ function initialAlavatarLink() {
   openPopup(popupAvatar);
 }
 
-function initialProfileInfo() {
+function openEditProfilePopup() {
   profileNameInput.value = profileTitle.textContent;
   profileAboutInput.value = profileDescription.textContent;
 
@@ -193,8 +202,8 @@ avatarForm.addEventListener("submit", handleAvatarFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleNewCardFormSubmit);
 
-profileAvatarEditButton.addEventListener("click", () => initialAlavatarLink());
-profileEditButton.addEventListener("click", () => initialProfileInfo());
+profileAvatarEditButton.addEventListener("click", () => openEditAvatarPopup());
+profileEditButton.addEventListener("click", () => openEditProfilePopup());
 profileAddButton.addEventListener("click", () => openPopup(popupNewCard));
 
 popups.forEach((popup) => popup.addEventListener("mousedown", closeByEvents));
