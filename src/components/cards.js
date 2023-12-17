@@ -2,56 +2,69 @@ import { deleteCard, likeCard, dislikeCard } from "./api";
 
 /* Функция генерации карточки */
 
-export default function createCard(cardAtribute, profileId, handleImageClick) {
+function createCard(cardData, profileId, onLike, onDelete, onOpenImage) {
   const cardTemplate = document.querySelector("#card-template").content,
     card = cardTemplate.querySelector(".card").cloneNode(true),
     cardImage = card.querySelector(".card__image"),
     cardTitle = card.querySelector(".card__title"),
     cardLikeButton = card.querySelector(".card__like-button"),
-    cardLikeCouner = card.querySelector(".card__like-counter"),
+    cardLikeCounter = card.querySelector(".card__like-counter"),
+    isLiked = cardData.likes.some((likeItem) => likeItem._id === profileId),
     deleteButton = card.querySelector(".card__delete-button");
 
-  cardImage.src = cardAtribute.link;
-  cardImage.alt = cardAtribute.name;
-  cardTitle.textContent = cardAtribute.name;
-  cardLikeCouner.textContent = cardAtribute.likes.length;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardTitle.textContent = cardData.name;
+  cardLikeCounter.textContent = cardData.likes.length;
 
-  if (cardAtribute.likes.some((likeItem) => likeItem._id === profileId))
-    cardLikeButton.classList.add("card__like-button_is-active");
+  if (cardData.owner._id === profileId) deleteButton.style.display = "block";
+  else deleteButton.style.display = "none";
+
+  if (isLiked) cardLikeButton.classList.add("card__like-button_is-active");
   else cardLikeButton.classList.remove("card__like-button_is-active");
 
-  cardImage.addEventListener("click", handleImageClick);
-  cardLikeButton.addEventListener("click", () => {
-    if (cardLikeButton.classList.contains("card__like-button_is-active")) {
-      dislikeCard(cardAtribute._id)
-        .then(
-          (cardData) => (cardLikeCouner.textContent = cardData.likes.length)
-        )
-        .catch((error) =>
-          console.error("Ошибка при добавлении карточки:", error)
-        );
-
-      cardLikeButton.classList.remove("card__like-button_is-active");
-    } else {
-      likeCard(cardAtribute._id)
-        .then(
-          (cardData) => (cardLikeCouner.textContent = cardData.likes.length)
-        )
-        .catch((error) =>
-          console.error("Ошибка при добавлении карточки:", error)
-        );
-
-      cardLikeButton.classList.add("card__like-button_is-active");
-    }
-  });
-
-  if (cardAtribute.owner._id === profileId) {
-    deleteButton.addEventListener("click", () => {
-      deleteCard(cardAtribute._id);
-      card.remove();
-    });
-    deleteButton.style.display = "block";
-  } else deleteButton.style.display = "none";
+  cardImage.addEventListener("click", () => onOpenImage(card));
+  cardLikeButton.addEventListener("click", () => onLike(card, cardData));
+  deleteButton.addEventListener("click", () => onDelete(card, cardData));
 
   return card;
 }
+
+/* Функция лайка карточки */
+
+function changeLike(card, cardData) {
+  const cardLikeButton = card.querySelector(".card__like-button"),
+    cardLikeCounter = card.querySelector(".card__like-counter");
+
+  if (cardLikeButton.classList.contains("card__like-button_is-active")) {
+    dislikeCard(cardData._id)
+      .then((data) => {
+        cardLikeCounter.textContent = data.likes.length;
+
+        cardLikeButton.classList.remove("card__like-button_is-active");
+      })
+      .catch((error) =>
+        console.error("Ошибка при добавлении карточки:", error)
+      );
+  } else {
+    likeCard(cardData._id)
+      .then((data) => {
+        cardLikeCounter.textContent = data.likes.length;
+
+        cardLikeButton.classList.add("card__like-button_is-active");
+      })
+      .catch((error) =>
+        console.error("Ошибка при добавлении карточки:", error)
+      );
+  }
+}
+
+/* Функция удаления карточки */
+
+function removeCard(card, cardData) {
+  deleteCard(cardData._id)
+    .then(() => card.remove())
+    .catch((error) => console.error("Ошибка при добавлении карточки:", error));
+}
+
+export { createCard, changeLike, removeCard };

@@ -27,7 +27,6 @@
           <div class="profile__image"></div>
           <div class="profile__info">
             <h1 class="profile__title"></h1>
-            <span class="profile__id"></span>
             <button
               class="profile__edit-button"
               type="button"
@@ -67,7 +66,7 @@
               placeholder="Ссылка на картинку"
               required
               pattern="https?://.+"
-              title="Введите корректный URL"
+              data-error="Введите корректный URL"
             />
             <span class="popup__input_type_error" data-error="link"></span>
             <button type="submit" class="button popup__button" required>
@@ -95,7 +94,7 @@
               minlength="2"
               maxlength="40"
               pattern="[A-Za-zА-Яа-яЁё\- ]+"
-              title="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+              data-error="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="popup__input_type_error" data-error="name"></span>
             <input
@@ -107,7 +106,7 @@
               minlength="2"
               maxlength="200"
               pattern="[A-Za-zА-Яа-яЁё\- ]+"
-              title="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+              data-error="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span
               class="popup__input_type_error"
@@ -138,7 +137,7 @@
               minlength="2"
               maxlength="30"
               pattern="[A-Za-zА-Яа-яЁё\- ]+"
-              title="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
+              data-error="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
             />
             <span
               class="popup__input_type_error"
@@ -151,7 +150,7 @@
               placeholder="Ссылка на картинку"
               required
               pattern="https?://.+"
-              title="Введите корректный URL"
+              data-error="Введите корректный URL"
             />
             <span class="popup__input_type_error" data-error="link"></span>
             <button type="submit" class="button popup__button" required>
