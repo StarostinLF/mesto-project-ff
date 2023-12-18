@@ -1,9 +1,7 @@
 /* Функция открытия попапов */
 
 function openPopup(popup) {
-  const newPopup = popup;
-
-  newPopup.classList.add("popup_is-opened");
+  popup.classList.add("popup_is-opened");
 
   document.addEventListener("keydown", closeByEscape);
 }
@@ -11,9 +9,7 @@ function openPopup(popup) {
 /* Функция закрытия попапов */
 
 function closePopup(popup) {
-  const newPopup = popup;
-
-  newPopup.classList.remove("popup_is-opened");
+  popup.classList.remove("popup_is-opened");
 
   document.removeEventListener("keydown", closeByEscape);
 }
