@@ -2,11 +2,7 @@ import "./pages/index.css";
 import { deleteCard } from "./components/api";
 import { createCard, changeLike, deleteMyCard } from "./components/cards";
 import { openPopup, closePopup, closeByOverlay } from "./components/modal";
-import {
-  enableValidation,
-  clearValidation,
-  validationConfig,
-} from "./components/validation";
+import { enableValidation, clearValidation } from "./components/validation";
 import {
   updateAvatar,
   getProfileInfo,
@@ -14,6 +10,19 @@ import {
   getInitialCards,
   addCard,
 } from "./components/api";
+
+/* CSS-классы и id пользователя */
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+let profileId = null;
 
 /* @todo: DOM узлы */
 
@@ -56,8 +65,6 @@ const popups = document.querySelectorAll(".popup"),
   popupImage = popupImageContainer.querySelector(".popup__image"),
   popupCaption = popupImageContainer.querySelector(".popup__caption");
 
-let profileId = null;
-
 /* Вывести данные профиля и все карточки на страницу */
 
 Promise.all([getProfileInfo(), getInitialCards()])
@@ -98,7 +105,7 @@ function handleAvatarFormSubmit(evt) {
     )
     .finally(() => (popupAvatarButton.textContent = originalButtonText));
 
-  clearValidation(avatarForm);
+  clearValidation(avatarForm, validationConfig);
 }
 
 /* @todo: Изменить имя и биографию профиля */
@@ -122,7 +129,7 @@ function handleProfileFormSubmit(evt) {
     )
     .finally(() => (popupEditProfileButton.textContent = originalButtonText));
 
-  clearValidation(profileForm);
+  clearValidation(profileForm, validationConfig);
 }
 
 /* @todo: Добавить карточку на страницу */
@@ -153,7 +160,7 @@ function handleNewCardFormSubmit(evt) {
     .catch((error) => console.error("Ошибка при добавлении карточки:", error))
     .finally(() => (popupNewCardButton.textContent = originalButtonText));
 
-  clearValidation(cardForm);
+  clearValidation(cardForm, validationConfig);
 }
 
 /* @todo: Удалить свою карточку */
@@ -212,6 +219,6 @@ popups.forEach((popup) => popup.addEventListener("mousedown", closeByOverlay));
 
 enableValidation(validationConfig);
 
-clearValidation(avatarForm);
-clearValidation(profileForm);
-clearValidation(cardForm);
+clearValidation(avatarForm, validationConfig);
+clearValidation(profileForm, validationConfig);
+clearValidation(cardForm, validationConfig);

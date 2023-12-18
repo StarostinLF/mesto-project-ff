@@ -1,17 +1,6 @@
-/* Объект СSS-классов */
-
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
-
 /* Функции показа/скрытия ошибок валидации */
 
-function showError(input, errorMessage) {
+function showError(input, errorMessage, validationConfig) {
   const errorElement = input
     .closest(validationConfig.formSelector)
     .querySelector(`.popup__input_type_error-${input.name}`);
@@ -21,21 +10,21 @@ function showError(input, errorMessage) {
   errorElement.textContent = errorMessage;
 }
 
-function hideError(input) {
+function hideError(input, validationConfig) {
   const errorElement = input
     .closest(validationConfig.formSelector)
     .querySelector(`.popup__input_type_error-${input.name}`);
 
   input.classList.remove(validationConfig.inputErrorClass);
 
-  if (errorElement) errorElement.textContent = "";
+  errorElement.textContent = "";
 }
 
 /* Проверка валидации полей ввода */
 
-function checkInputValidity(input) {
+function checkInputValidity(input, validationConfig) {
   if (input.validity.valueMissing) {
-    showError(input, "Это обязательное поле");
+    showError(input, "Это обязательное поле", validationConfig);
 
     return false;
   }
@@ -44,8 +33,8 @@ function checkInputValidity(input) {
     input.setCustomValidity(input.dataset.error);
   else input.setCustomValidity("");
 
-  if (input.validity.valid) hideError(input);
-  else showError(input, input.dataset.error);
+  if (input.validity.valid) hideError(input, validationConfig);
+  else showError(input, input.validationMessage, validationConfig);
 
   return true;
 }
@@ -61,8 +50,8 @@ function setEventListeners(form, validationConfig) {
     const input = evt.target;
     const isFormValid = form.checkValidity();
 
-    checkInputValidity(input);
-    toggleButtonState(isFormValid, submitButton);
+    checkInputValidity(input, validationConfig);
+    toggleButtonState(isFormValid, submitButton, validationConfig);
   });
 
   form.addEventListener("reset", () => clearValidation(form));
@@ -70,15 +59,15 @@ function setEventListeners(form, validationConfig) {
 
 /* Подключение валидации к формам */
 
-function enableValidation(config) {
-  const forms = document.querySelectorAll(config.formSelector);
+function enableValidation(validationConfig) {
+  const forms = document.querySelectorAll(validationConfig.formSelector);
 
   forms.forEach((form) => setEventListeners(form, validationConfig));
 }
 
 /* Переключение кнопки в попапах */
 
-function toggleButtonState(isValid, button) {
+function toggleButtonState(isValid, button, validationConfig) {
   if (isValid) {
     button.removeAttribute("disabled");
     button.classList.remove(validationConfig.inactiveButtonClass);
@@ -90,15 +79,15 @@ function toggleButtonState(isValid, button) {
 
 /* Сбросить валидацию */
 
-function clearValidation(form) {
+function clearValidation(form, validationConfig) {
   const inputs = form.querySelectorAll(validationConfig.inputSelector);
   const submitButton = form.querySelector(
     validationConfig.submitButtonSelector
   );
 
-  inputs.forEach((input) => hideError(input));
+  inputs.forEach((input) => hideError(input, validationConfig));
 
-  toggleButtonState(false, submitButton);
+  toggleButtonState(false, submitButton, validationConfig);
 }
 
-export { enableValidation, clearValidation, validationConfig };
+export { enableValidation, clearValidation };
