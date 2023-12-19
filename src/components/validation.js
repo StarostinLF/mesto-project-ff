@@ -54,7 +54,7 @@ function setEventListeners(form, validationConfig) {
     toggleButtonState(isFormValid, submitButton, validationConfig);
   });
 
-  form.addEventListener("reset", () => clearValidation(form));
+  form.addEventListener("reset", () => clearValidation(form, validationConfig));
 }
 
 /* Подключение валидации к формам */
