@@ -1,6 +1,6 @@
 # Проектная работа Mesto
 
-### Проектная работа с [макетом](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1&mode=dev) "Mesto" по курсу Яндекс Практикума "Фронтенд-разработчик"
+### Учебная проектная работа с макетом "Mesto Russia" (макеты [5](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1&mode=dev), [6](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1&mode=dev) и [9](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1&mode=dev) спринтов) по курсу Яндекс Практикума "Фронтенд-разработчик"
 
 Комплектация ресурсной папки ([src](https://github.com/StarostinLF/mesto-project-ff/tree/main/src)):
 
