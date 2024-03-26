@@ -5,10 +5,8 @@
   -moz-border-radius: 50%;
   border-radius: 50%;
   background-size: cover;
-  /*Ковер тут симпатичнее контейна*/
   background-position: center;
   margin: 0 29px 0 0;
-  /*Макет очень кривоват, как считать этот отступ я хз. Проявите тут лояльность пока что*/
 }
 
 /*.profile__image:hover::after {
