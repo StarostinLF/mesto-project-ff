@@ -30,33 +30,33 @@ const cardsContainer = document.querySelector(".places__list");
 
 const profile = document.querySelector(".profile"),
   profileAvatarEditButton = profile.querySelector(".profile__image"),
-  profileEditButton = profile.querySelector(".profile__edit-button"),
+  //profileEditButton = profile.querySelector(".profile__edit-button"),
   profileTitle = profile.querySelector(".profile__title"),
   profileDescription = profile.querySelector(".profile__description"),
   profileAddButton = profile.querySelector(".profile__add-button");
 
-const avatarForm = document.querySelector('.popup__form[name="avatar"]'),
-  avatarLinkInput = avatarForm.querySelector(".popup__input_type_url");
+/*const avatarForm = document.querySelector('.popup__form[name="avatar"]'),
+  avatarLinkInput = avatarForm.querySelector(".popup__input_type_url");*/
 
-const profileForm = document.querySelector('.popup__form[name="edit-profile"]'),
+/*const profileForm = document.querySelector('.popup__form[name="edit-profile"]'),
   profileNameInput = profileForm.querySelector(".popup__input_type_name"),
   profileAboutInput = profileForm.querySelector(
     ".popup__input_type_description"
-  );
+  );*/
 
 const cardForm = document.querySelector('.popup__form[name="new-place"]'),
   cardNameInput = cardForm.querySelector(".popup__input_type_card-name"),
   cardLinkInput = cardForm.querySelector(".popup__input_type_url");
 
 const popups = document.querySelectorAll(".popup"),
-  popupAvatar = document.querySelector(".popup_type_edit_avatar"),
+  /*popupAvatar = document.querySelector(".popup_type_edit_avatar"),
   popupAvatarButton = popupAvatar.querySelector(
     validationConfig.submitButtonSelector
   ),
   popupEditProfile = document.querySelector(".popup_type_edit"),
   popupEditProfileButton = popupEditProfile.querySelector(
     validationConfig.submitButtonSelector
-  ),
+  ),*/
   popupNewCard = document.querySelector(".popup_type_new-card"),
   popupNewCardButton = popupNewCard.querySelector(
     validationConfig.submitButtonSelector
@@ -87,7 +87,7 @@ Promise.all([getProfileInfo(), getInitialCards()])
 
 /* @todo: Изменить аватар профиля */
 
-function handleAvatarFormSubmit(evt) {
+/*function handleAvatarFormSubmit(evt) {
   evt.preventDefault();
 
   const originalButtonText = popupAvatarButton.textContent;
@@ -106,11 +106,11 @@ function handleAvatarFormSubmit(evt) {
     .finally(() => (popupAvatarButton.textContent = originalButtonText));
 
   clearValidation(avatarForm, validationConfig);
-}
+}*/
 
 /* @todo: Изменить имя и биографию профиля */
 
-function handleProfileFormSubmit(evt) {
+/*function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
   const originalButtonText = popupEditProfileButton.textContent;
@@ -130,7 +130,7 @@ function handleProfileFormSubmit(evt) {
     .finally(() => (popupEditProfileButton.textContent = originalButtonText));
 
   clearValidation(profileForm, validationConfig);
-}
+}*/
 
 /* @todo: Добавить карточку на страницу */
 
@@ -187,30 +187,30 @@ function onOpenImage(cardData) {
 
 /* Исходные данные в попапах */
 
-function openEditAvatarPopup() {
+/*function openEditAvatarPopup() {
   avatarLinkInput.value = profileAvatarEditButton.style.backgroundImage.replace(
     /url\(["']?(.*?)["']?\)/,
     "$1"
   );
 
   openPopup(popupAvatar);
-}
+}*/
 
-function openEditProfilePopup() {
+/*function openEditProfilePopup() {
   profileNameInput.value = profileTitle.textContent;
   profileAboutInput.value = profileDescription.textContent;
 
   openPopup(popupEditProfile);
-}
+}*/
 
 /* Обработчики событий (формы, попапы) */
 
-avatarForm.addEventListener("submit", handleAvatarFormSubmit);
-profileForm.addEventListener("submit", handleProfileFormSubmit);
+//avatarForm.addEventListener("submit", handleAvatarFormSubmit);
+//profileForm.addEventListener("submit", handleProfileFormSubmit);
 cardForm.addEventListener("submit", handleNewCardFormSubmit);
 
-profileAvatarEditButton.addEventListener("click", () => openEditAvatarPopup());
-profileEditButton.addEventListener("click", () => openEditProfilePopup());
+//profileAvatarEditButton.addEventListener("click", () => openEditAvatarPopup());
+//profileEditButton.addEventListener("click", () => openEditProfilePopup());
 profileAddButton.addEventListener("click", () => openPopup(popupNewCard));
 
 popups.forEach((popup) => popup.addEventListener("mousedown", closeByOverlay));
@@ -219,6 +219,6 @@ popups.forEach((popup) => popup.addEventListener("mousedown", closeByOverlay));
 
 enableValidation(validationConfig);
 
-clearValidation(avatarForm, validationConfig);
-clearValidation(profileForm, validationConfig);
+//clearValidation(avatarForm, validationConfig);
+//clearValidation(profileForm, validationConfig);
 clearValidation(cardForm, validationConfig);
