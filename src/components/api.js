@@ -49,7 +49,7 @@ function editProfileInfo(name, about) {
   }).then((res) => checkResponse(res));
 }
 
-/* Получение отредактированных данных профиля */
+/* Получение всех карточек с сервера */
 
 function getInitialCards() {
   return fetch(`${config.baseUrl}/cards`, {
