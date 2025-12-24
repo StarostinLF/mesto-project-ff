@@ -1,2 +1,13 @@
-node_modules
-dist
+/node_modules
+
+/coverage
+
+.next
+out
+/build
+
+.env
+
+.vercel
+
+next-env.d.ts
